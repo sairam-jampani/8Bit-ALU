@@ -83,12 +83,12 @@ The following test cases were applied to verify the ALU functionality (using `A 
 
 ### RTL Schematic
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/bd7d8884-e487-4ce6-a46a-5d04c8aa1a0d" />
 
-<img width="1920" height="1080" alt="Screenshot 2026-09-13 123519" src="https://github.com/user-attachments/assets/c5b3895d-4c76-4bce-9603-b953516ba186" />
+
 
 ### Waveform Analysis
-> *(Insert your Vivado simulation waveform screenshot here)*
-![Simulation Waveform](link_to_waveform_image.png)
+<img width="1920" height="1080" alt="Screenshot 2026-09-13 123519" src="https://github.com/user-attachments/assets/c5b3895d-4c76-4bce-9603-b953516ba186" />
 
 ---
 
