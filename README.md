@@ -82,13 +82,20 @@ The following test cases were applied to verify the ALU functionality (using `A 
 **All operations were successfully verified through behavioral simulation.**
 
 ### RTL Schematic
-
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/bd7d8884-e487-4ce6-a46a-5d04c8aa1a0d" />
-
 
 
 ### Waveform Analysis
 <img width="1920" height="1080" alt="Screenshot 2026-09-13 123519" src="https://github.com/user-attachments/assets/c5b3895d-4c76-4bce-9603-b953516ba186" />
+
+
+**Understanding the Waveform:**
+The simulation waveform visually confirms the ALU's hardware functionality over time. 
+* **`A` and `B`:** The two 8-bit input operands.
+* **`sel` (Select):** The 3-bit control signal commanding the ALU's operation.
+* **`Result`:** The final 8-bit computed answer.
+
+*Example:* As shown in the simulation, when the `sel` signal is set to `000` (Addition), and input `A` is `20` with input `B` as `10`, the `Result` bus instantly evaluates and transitions to `30`. This real-time hardware response perfectly matches our verification table.
 
 ---
 
