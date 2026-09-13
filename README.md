@@ -91,6 +91,15 @@ The following test cases were applied to verify the ALU functionality (using `A 
 
 ---
 
+## 🎯 Learning Objectives
+* Writing modular and behavioral SystemVerilog/Verilog HDL code for digital systems.
+* Designing instruction-controlled multiplexer logic.
+* Developing comprehensive testbenches to verify arithmetic and logical operations.
+* Generating, navigating, and analyzing RTL schematics and timing waveforms using the Xilinx Vivado Design Suite.
+* Understanding FPGA part nomenclature and target device specifications.
+
+---
+
 ## 📫 Connect with Me
 - **GitHub:** [github.com/sairam-jampani](https://github.com/sairam-jampani)
 - **LinkedIn:** [linkedin.com/in/sai-ram-jampani04](https://www.linkedin.com/in/sai-ram-jampani04/)
