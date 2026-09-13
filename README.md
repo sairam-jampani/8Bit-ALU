@@ -1,65 +1,93 @@
 # 8-Bit Arithmetic Logic Unit (ALU) Design
 
 <p align="left">
-  <img src="https://img.shields.io/badge/Language-Verilog-blue.svg" alt="Language">
-  <img src="https://img.shields.io/badge/Tool-Xilinx%20Vivado-orange.svg" alt="Tool">
+  <img src="https://img.shields.io/badge/Language-SystemVerilog-blue.svg" alt="Language">
+  <img src="https://img.shields.io/badge/Tool-Xilinx%20Vivado%202020.1-orange.svg" alt="Tool">
   <img src="https://img.shields.io/badge/Design%20Flow-Front--End-brightgreen.svg" alt="Flow">
 </p>
 
 ---
 
 ## 📖 Project Description
-This project implements an 8-bit Arithmetic Logic Unit (ALU) using Verilog HDL. The ALU is a fundamental building block of any central processing unit (CPU), responsible for performing integer arithmetic and bitwise logical operations. This repository demonstrates the complete front-end digital design flow, focusing exclusively on RTL design, testbench creation, synthesis, and waveform simulation.
+This project implements an 8-bit Arithmetic Logic Unit (ALU) using SystemVerilog. The ALU is a fundamental building block of any central processing unit (CPU), responsible for performing integer arithmetic and bitwise logical operations. This repository demonstrates the complete front-end digital design flow, focusing on RTL design, testbench creation, synthesis, and behavioral simulation.
 
 ---
 
-## ✨ Features
-* **Arithmetic Operations:** Addition, Subtraction, Multiplication, Increment, and Decrement.
-* **Logical Operations:** Bitwise AND, OR, XOR, NAND, NOR, and NOT.
-* **Shift Operations:** Logical Left Shift and Logical Right Shift.
-* **Status Flags:** Accurately computes critical output flags including **Zero (Z)**, **Carry (C)**, and **Overflow (V)**.
-* **Parameter-Driven Routing:** Utilizes a central Multiplexer (MUX) controlled by a 4-bit Opcode to route the correct operational result to the output bus.
+## ⚙️ Target Hardware & Device Specifications
+
+* **Target FPGA Device:** `xc7a100tcsg324-1`
+
+| Component | Nomenclature | Technical Meaning |
+| :--- | :--- | :--- |
+| **`xc7a`** | Family Architecture | **Xilinx Artix-7 Series** (Optimized for low power and high performance). |
+| **`100t`** | Logic Capacity | **100K Logic Cells** (~101,440 logic cells). |
+| **`csg324`** | Package Type | **Chip Scale BGA (CSG) Package with 324 Pins**. |
+| **`-1`** | Speed Grade | **Speed Grade -1** (Standard performance grade). |
+
+---
+
+## 🚀 Features
+The ALU supports the following parameter-driven operations routed via a multiplexer:
+
+| Select (`sel`) | Operation |
+| :--- | :--- |
+| `000` | Addition (A + B) |
+| `001` | Subtraction (A - B) |
+| `010` | Bitwise AND |
+| `011` | Bitwise OR |
+| `100` | Bitwise XOR |
+| `101` | Bitwise NOT (~A) |
+| `110` | Left Shift (A << 1) |
+| `111` | Right Shift (A >> 1) |
+
+---
+
+## 📂 Project Files
+
+* **`alu.sv`** → ALU Design Module
+* **`alu_tb.sv`** → Testbench for Verification
+
+---
+
+## 🛠️ Tools Used
+* **Verilog HDL / SystemVerilog**
+* **Xilinx Vivado 2020.1**
+* **Behavioral Simulation** (Vivado XSim)
 
 ---
 
 ## 🔄 Design & Verification Flow
-Because this project focuses on design and simulation rather than hardware implementation, it strictly follows a front-end verification methodology:
-
-1. **Design Code (RTL):** Development of the structural and behavioral Verilog code defining the ALU operations.
-2. **Testbench Code:** Creation of a robust Verilog testbench designed to inject diverse input combinations (stimuli) and opcodes to thoroughly test the module.
-3. **RTL Synthesis & Schematic:** Compiling the RTL code in Xilinx Vivado to generate a hardware schematic, mapping the behavioral code to generic logic gates.
-4. **Simulation Waveform:** Executing the testbench in Vivado XSim to visualize and verify the logic transitions and timing over time.
+1. **Design Code (RTL):** Development of the structural and behavioral code defining the ALU operations.
+2. **Testbench Code:** Creation of a robust testbench designed to inject diverse input combinations.
+3. **RTL Synthesis & Schematic:** Compiling the RTL code in Xilinx Vivado to generate a hardware schematic.
+4. **Simulation Waveform:** Executing the testbench to visualize and verify logic transitions.
 
 ---
 
-## 🧪 Simulation & Results
+## 🧪 Simulation Results
 
-### 1. RTL Schematic
-The generated schematic visualizes how the Verilog code is synthesized into physical digital components like adders, logic gates, and multiplexers.
+The following test cases were applied to verify the ALU functionality (using `A = 20`, `B = 10`):
 
+| Operation | Result |
+| :--- | :--- |
+| 20 + 10 | 30 |
+| 20 - 10 | 10 |
+| 20 AND 10 | 0 |
+| 20 OR 10 | 30 |
+| 20 XOR 10 | 30 |
+| NOT 20 | 235 |
+| 20 << 1 | 40 |
+| 20 >> 1 | 10 |
+
+**All operations were successfully verified through behavioral simulation.**
+
+### RTL Schematic
 > *(Insert your RTL schematic screenshot here)*
 ![RTL Schematic](link_to_schematic_image.png)
 
-### 2. Waveform Analysis
-To ensure functional correctness, the design is simulated. The waveform below illustrates the inputs changing over time and the ALU's immediate response:
-
-* **`A` and `B`:** The two 8-bit input operands.
-* **`Opcode`:** The 4-bit control signal commanding the ALU's operation (e.g., `0000` for Addition, `0001` for Subtraction).
-* **`Result`:** The final 8-bit computed answer.
-
-**How to read the waveform:** 
-For example, when the `Opcode` is set to `0000` (Add), and input `A` is `00000101` (5) with input `B` as `00000011` (3), the `Result` bus will instantly transition to `00001000` (8).
-
+### Waveform Analysis
 > *(Insert your Vivado simulation waveform screenshot here)*
 ![Simulation Waveform](link_to_waveform_image.png)
-
----
-
-## 🎯 Learning Objectives
-* Writing modular and behavioral Verilog HDL code for digital systems.
-* Designing instruction-controlled multiplexer logic.
-* Developing comprehensive testbenches to verify edge cases, including carry and overflow generation.
-* Generating, navigating, and analyzing RTL schematics and timing waveforms using the Xilinx Vivado Design Suite.
 
 ---
 
