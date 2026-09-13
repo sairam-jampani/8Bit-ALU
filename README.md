@@ -82,8 +82,9 @@ The following test cases were applied to verify the ALU functionality (using `A 
 **All operations were successfully verified through behavioral simulation.**
 
 ### RTL Schematic
-> *(Insert your RTL schematic screenshot here)*
-![RTL Schematic](link_to_schematic_image.png)
+
+
+<img width="1920" height="1080" alt="Screenshot 2026-09-13 123519" src="https://github.com/user-attachments/assets/c5b3895d-4c76-4bce-9603-b953516ba186" />
 
 ### Waveform Analysis
 > *(Insert your Vivado simulation waveform screenshot here)*
